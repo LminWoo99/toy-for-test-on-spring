@@ -6,10 +6,8 @@ import lombok.Getter;
 
 @Getter
 public class UserUpdate {
-
     private final String nickname;
     private final String address;
-
     @Builder
     public UserUpdate(
         @JsonProperty("nickname") String nickname,
