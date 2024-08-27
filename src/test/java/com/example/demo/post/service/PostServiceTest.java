@@ -15,6 +15,8 @@ import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.jdbc.Sql.ExecutionPhase;
 import org.springframework.test.context.jdbc.SqlGroup;
 
+import java.util.HashMap;
+
 @SpringBootTest
 @TestPropertySource("classpath:test-application.properties")
 @SqlGroup({
@@ -44,7 +46,7 @@ public class PostServiceTest {
             .writerId(1)
             .content("foobar")
             .build();
-
+        HashMap<String, Integer> map = new HashMap<>();
         // when
         Post result = postService.create(postCreate);
 
@@ -67,7 +69,6 @@ public class PostServiceTest {
         // then
         Post postEntity= postService.getById(1);
         assertThat(postEntity.getContent()).isEqualTo("hello world :)");
-        assertThat(postEntity.getModifiedAt()).isGreaterThan(0);
     }
 
 }

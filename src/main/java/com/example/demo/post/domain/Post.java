@@ -40,6 +40,5 @@ public class Post {
                 .modifiedAt(Clock.systemUTC().millis())
                 .writer(writer)
                 .build();
-
     }
 }
