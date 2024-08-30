@@ -1,5 +1,6 @@
 package com.example.demo.mock;
 
+import com.example.demo.common.domain.exception.ResourceNotFoundException;
 import com.example.demo.post.domain.Post;
 import com.example.demo.post.service.PostRepository;
 import com.example.demo.user.domain.User;
@@ -50,5 +51,10 @@ private final List<User> data = new ArrayList<>();
             return user;
         }
 
+    }
+
+    @Override
+    public User getById(long id) {
+        return findById(id).orElseThrow(() -> new ResourceNotFoundException("Users", id));
     }
 }
