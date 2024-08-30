@@ -1,11 +1,9 @@
 package com.example.demo.mock;
 
 import com.example.demo.common.domain.exception.ResourceNotFoundException;
-import com.example.demo.post.domain.Post;
-import com.example.demo.post.service.PostRepository;
 import com.example.demo.user.domain.User;
 import com.example.demo.user.domain.UserStatus;
-import com.example.demo.user.service.UserRepository;
+import com.example.demo.user.service.port.UserRepository;
 
 import java.util.ArrayList;
 import java.util.List;

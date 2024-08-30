@@ -6,32 +6,23 @@ import com.example.demo.mock.*;
 import com.example.demo.post.domain.Post;
 import com.example.demo.post.domain.PostCreate;
 import com.example.demo.post.domain.PostUpdate;
-import com.example.demo.post.infrastructure.PostEntity;
-import com.example.demo.post.service.PostService;
+import com.example.demo.post.service.PostServiceImpl;
 import com.example.demo.user.domain.User;
 import com.example.demo.user.domain.UserStatus;
-import com.example.demo.user.service.CertificationService;
-import com.example.demo.user.service.UserService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.TestPropertySource;
-import org.springframework.test.context.jdbc.Sql;
-import org.springframework.test.context.jdbc.Sql.ExecutionPhase;
-import org.springframework.test.context.jdbc.SqlGroup;
 
 import java.util.HashMap;
 
 
-public class PostServiceTest {
-    private PostService postService;
+public class PostServiceImplTest {
+    private PostServiceImpl postServiceImpl;
     @BeforeEach
     void init() {
         FakePostRepository fakePostRepository = new FakePostRepository();
         FakeUserRepository fakeUserRepository = new FakeUserRepository();
 
-        this.postService = PostService.builder()
+        this.postServiceImpl = PostServiceImpl.builder()
                 .userRepository(fakeUserRepository)
                 .postRepository(fakePostRepository)
                 .clockHolder(new TestClockHolder(1678530673958L))
@@ -70,7 +61,7 @@ public class PostServiceTest {
     void getById는_존재하는_게시물을_내려준다() {
         // given
         // when
-        Post result = postService.getById(1);
+        Post result = postServiceImpl.getById(1);
 
         // then
         assertThat(result.getContent()).isEqualTo("helloworld");
@@ -86,7 +77,7 @@ public class PostServiceTest {
             .build();
         HashMap<String, Integer> map = new HashMap<>();
         // when
-        Post result = postService.create(postCreate);
+        Post result = postServiceImpl.create(postCreate);
 
         // then
         assertThat(result.getId()).isNotNull();
@@ -102,10 +93,10 @@ public class PostServiceTest {
             .build();
 
         // when
-        postService.update(1, postUpdate);
+        postServiceImpl.update(1, postUpdate);
 
         // then
-        Post postEntity= postService.getById(1);
+        Post postEntity= postServiceImpl.getById(1);
         assertThat(postEntity.getContent()).isEqualTo("hello world :)");
         assertThat(postEntity.getModifiedAt()).isEqualTo(1678530673958L);
     }

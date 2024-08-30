@@ -1,9 +1,8 @@
 package com.example.demo.mock;
 
 import com.example.demo.post.domain.Post;
-import com.example.demo.post.service.PostRepository;
+import com.example.demo.post.service.port.PostRepository;
 
-import java.time.Clock;
 import java.util.*;
 import java.util.concurrent.atomic.AtomicLong;
 
