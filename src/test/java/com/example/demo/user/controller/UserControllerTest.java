@@ -2,25 +2,17 @@ package com.example.demo.user.controller;
 
 import com.example.demo.common.domain.exception.CertificationCodeNotMatchedException;
 import com.example.demo.common.domain.exception.ResourceNotFoundException;
-import com.example.demo.common.port.ClockHolder;
 import com.example.demo.mock.TestContainer;
-import com.example.demo.user.controller.port.UserCreateService;
-import com.example.demo.user.controller.port.UserReadService;
 import com.example.demo.user.controller.response.UserResponse;
 import com.example.demo.user.domain.*;
-import com.example.demo.user.infrastructure.UserEntity;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.http.HttpStatusCode;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.server.ResponseStatusException;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 
 class UserControllerTest {
