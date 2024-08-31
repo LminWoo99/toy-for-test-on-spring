@@ -37,7 +37,7 @@ class PostControllerTest {
 
 
         // when
-        ResponseEntity<PostResponse> result = testContainer.postController.getPostById(1L);
+        ResponseEntity<PostResponse> result = testContainer.postController.getById(1L);
 
         // then
         assertThat(result.getStatusCode()).isEqualTo(HttpStatusCode.valueOf(200));
